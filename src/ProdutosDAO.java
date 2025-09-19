@@ -85,5 +85,31 @@ public class ProdutosDAO {
         
         return listagem;
     }
+    
+    //metodo para alterar o status para vendido no bando de dados
+    public void venderProduto(int id) {
+        conn = new conectaDAO().conectarDB();
+        String sql = "UPDATE produtos SET status = ? WHERE id = ?";
+
+        try {
+            prep = conn.prepareStatement(sql);
+            prep.setString(1, "Vendido");
+            prep.setInt(2, id);
+            
+            prep.execute();
+
+            JOptionPane.showMessageDialog(null, "Produto vendido com sucesso!");
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro ao vender: " + erro.getMessage());
+        } finally {
+            try {
+                if (prep != null) prep.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
