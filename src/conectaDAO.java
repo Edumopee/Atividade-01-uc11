@@ -30,7 +30,7 @@ public class conectaDAO {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
             
             // Mensagem para confirmar a conexão, útil durante o desenvolvimento.
-             JOptionPane.showMessageDialog(null, "Conexão com o banco de dados estabelecida com sucesso!");
+            //JOptionPane.showMessageDialog(null, "Conexão com o banco de dados estabelecida com sucesso!");
             
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro ao conectar com o banco de dados: " + erro.getMessage());
